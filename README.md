@@ -1,6 +1,6 @@
 <p align="center">
-  <a href="https://github.com/brightbeanxyz/brightbean-studio">
-    <img src=".github/assets/brightbean-studio-logo.webp" alt="BrightBean Studio" width="280">
+  <a href="https://github.com/kgroyalty/promura-social">
+    <img src=".github/assets/promura-social-logo.webp" alt="Promura Social" width="280">
   </a>
 </p>
 
@@ -9,7 +9,7 @@
 </p>
 
 <p align="center">
-  <a href="https://github.com/brightbeanxyz/brightbean-studio/actions/workflows/ci.yml"><img src="https://github.com/brightbeanxyz/brightbean-studio/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
+  <a href="https://github.com/kgroyalty/promura-social/actions/workflows/ci.yml"><img src="https://github.com/kgroyalty/promura-social/actions/workflows/ci.yml/badge.svg" alt="CI"></a>
   <a href="LICENSE"><img src="https://img.shields.io/badge/License-AGPL--3.0-blue.svg" alt="License: AGPL-3.0"></a>
   <a href="https://www.python.org/"><img src="https://img.shields.io/badge/Python-3.12%2B-blue.svg" alt="Python 3.12+"></a>
   <a href="https://www.djangoproject.com/"><img src="https://img.shields.io/badge/Django-5.x-green.svg" alt="Django 5.x"></a>
@@ -17,9 +17,9 @@
 
 ---
 
-## About BrightBean Studio
+## About Promura Social
 
-BrightBean Studio is an open-source, self-hostable social media management platform built for creators, agencies and SMBs. It does what Sendible, SocialPilot, or ContentStudio do, but free and without per-seat, per-channel, or per-workspace limits. Plan, compose, schedule, approve, publish, and monitor content across Facebook, Instagram, LinkedIn, TikTok, YouTube, Pinterest, Threads, Bluesky, Google Business Profile, and Mastodon from a single multi-workspace dashboard.
+Promura Social is an open-source, self-hostable social media management platform built for creators, agencies and SMBs. It does what Sendible, SocialPilot, or ContentStudio do, but free and without per-seat, per-channel, or per-workspace limits. Plan, compose, schedule, approve, publish, and monitor content across Facebook, Instagram, LinkedIn, TikTok, YouTube, Pinterest, Threads, Bluesky, Google Business Profile, and Mastodon from a single multi-workspace dashboard.
 
 It's for people managing many client accounts under one roof who'd rather own their social stack than pay $100–300/month to a SaaS vendor. Every feature is available to every user. No paid tier, no feature gate, no upsell.
 
@@ -45,12 +45,12 @@ You can deploy it with a one-click button on Heroku, Render, or Railway, run it 
 
 <table>
   <tr>
-    <td width="50%"><img src=".github/assets/BrightBean%20Studio%20Calendar.webp" alt="Calendar view"><br><sub><b>Visual calendar</b> - drag-and-drop scheduling with recurring slots and queues.</sub></td>
-    <td width="50%"><img src=".github/assets/BrightBean%20Studio%20Post%20Editor.webp" alt="Post editor"><br><sub><b>Post editor</b> - composer with per-platform overrides and previews.</sub></td>
+    <td width="50%"><img src=".github/assets/Promura%20Studio%20Calendar.webp" alt="Calendar view"><br><sub><b>Visual calendar</b> - drag-and-drop scheduling with recurring slots and queues.</sub></td>
+    <td width="50%"><img src=".github/assets/Promura%20Studio%20Post%20Editor.webp" alt="Post editor"><br><sub><b>Post editor</b> - composer with per-platform overrides and previews.</sub></td>
   </tr>
   <tr>
-    <td width="50%"><img src=".github/assets/BrightBean%20Studio%20Idea%20Kanban%20Board.webp" alt="Idea kanban board"><br><sub><b>Idea board</b> - Kanban workflow to keep track of all your post ideas.</sub></td>
-    <td width="50%"><img src=".github/assets/BrightBean%20Social%20Media%20Platforms.webp" alt="Connected platforms"><br><sub><b>Connect anything</b> - 10+ first-party integrations, no aggregator.</sub></td>
+    <td width="50%"><img src=".github/assets/Promura%20Studio%20Idea%20Kanban%20Board.webp" alt="Idea kanban board"><br><sub><b>Idea board</b> - Kanban workflow to keep track of all your post ideas.</sub></td>
+    <td width="50%"><img src=".github/assets/Promura%20Social%20Media%20Platforms.webp" alt="Connected platforms"><br><sub><b>Connect anything</b> - 10+ first-party integrations, no aggregator.</sub></td>
   </tr>
 </table>
 
@@ -77,7 +77,7 @@ You can deploy it with a one-click button on Heroku, Render, or Railway, run it 
 
 | Heroku | Render | Railway |
 |:------:|:------:|:-------:|
-| [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/brightbeanxyz/brightbean-studio) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/brightbeanxyz/brightbean-studio) | [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/brightbean-studio?referralCode=brightbean) |
+| [![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy?template=https://github.com/kgroyalty/promura-social) | [![Deploy to Render](https://render.com/images/deploy-to-render-button.svg)](https://render.com/deploy?repo=https://github.com/kgroyalty/promura-social) | [![Deploy on Railway](https://railway.com/button.svg)](https://railway.com/deploy/promura-social?referralCode=promura) |
 
 After deploying, set these environment variables in your platform's dashboard:
 
@@ -106,15 +106,15 @@ For social media API keys, see [Platform Credentials](#platform-credentials). Fu
 ## Quick Start (Docker)
 
 ```bash
-git clone https://github.com/brightbeanxyz/brightbean-studio.git
-cd brightbean-studio
+git clone https://github.com/kgroyalty/promura-social.git
+cd promura-social
 cp .env.example .env
 ```
 
 Edit `.env` - change `DATABASE_URL` to point to the Docker service name:
 
 ```
-DATABASE_URL=postgres://postgres:postgres@postgres:5432/brightbean
+DATABASE_URL=postgres://postgres:postgres@postgres:5432/promura
 ```
 
 Then start everything:
@@ -146,8 +146,8 @@ Run everything natively - no Docker, no PostgreSQL install. Uses SQLite for the 
 **1. Clone and configure**
 
 ```bash
-git clone https://github.com/brightbeanxyz/brightbean-studio.git
-cd brightbean-studio
+git clone https://github.com/kgroyalty/promura-social.git
+cd promura-social
 cp .env.example .env
 ```
 
@@ -254,15 +254,15 @@ ruff format .
 
 ```bash
 # On your server:
-git clone https://github.com/brightbeanxyz/brightbean-studio.git
-cd brightbean-studio
+git clone https://github.com/kgroyalty/promura-social.git
+cd promura-social
 cp .env.example .env
 # Edit .env:
 #   SECRET_KEY=<generate a random 50+ char string>
 #   DEBUG=false
 #   ALLOWED_HOSTS=yourdomain.com
 #   APP_URL=https://yourdomain.com
-#   DATABASE_URL=postgres://postgres:<strong-password>@postgres:5432/brightbean
+#   DATABASE_URL=postgres://postgres:<strong-password>@postgres:5432/promura
 
 docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --build
 docker compose exec app python manage.py createsuperuser
@@ -292,7 +292,7 @@ See `architecture.md` for detailed per-platform instructions and cost breakdowns
 ## Project Structure
 
 ```
-brightbean-studio/
+promura-social/
 ├── config/
 │   ├── settings/
 │   │   ├── base.py            # Shared settings
@@ -343,7 +343,7 @@ To connect social media accounts, you need API credentials from each platform's 
 {APP_URL}/social-accounts/callback/{platform}/
 ```
 
-For example, if your `APP_URL` is `https://brightbean.example.com`, the Facebook redirect URI would be `https://brightbean.example.com/social-accounts/callback/facebook/`.
+For example, if your `APP_URL` is `https://promura.example.com`, the Facebook redirect URI would be `https://promura.example.com/social-accounts/callback/facebook/`.
 
 ### Meta (Facebook, Instagram, Threads)
 
@@ -406,7 +406,7 @@ The Instagram (Direct) connector uses the **Instagram API with Instagram Login**
 
 ### LinkedIn
 
-Brightbean Studio supports two LinkedIn paths. Pick whichever your LinkedIn dev app can obtain - or both, on separate apps.
+Promura Social supports two LinkedIn paths. Pick whichever your LinkedIn dev app can obtain - or both, on separate apps.
 
 **Path A - Personal-only (any individual developer can do this):**
 
@@ -447,7 +447,7 @@ Brightbean Studio supports two LinkedIn paths. Pick whichever your LinkedIn dev 
    PLATFORM_LINKEDIN_COMPANY_CLIENT_SECRET=your-client-secret
    ```
 
-If you set only the Path B (Company) credentials, Brightbean Studio automatically reuses them for personal connections too - refresh tokens (365-day) and inbox both work. You only need Path A vars if you have a separate Personal-only app.
+If you set only the Path B (Company) credentials, Promura Social automatically reuses them for personal connections too - refresh tokens (365-day) and inbox both work. You only need Path A vars if you have a separate Personal-only app.
 
 > **Note:** "Sign In with LinkedIn using OpenID Connect" / "Share on LinkedIn" and "Community Management API" are **mutually exclusive** on a single LinkedIn app. You need separate apps for Path A and Path B.
 
@@ -514,11 +514,11 @@ No developer app registration needed. Users connect by entering their Bluesky ha
 
 1. Log in to [Bluesky](https://bsky.app/)
 2. Go to **Settings → Privacy and Security → App Passwords**
-3. Create a new app password and use it when connecting your account in Brightbean Studio
+3. Create a new app password and use it when connecting your account in Promura Social
 
 ### Mastodon
 
-No developer app registration needed. Brightbean Studio automatically registers an OAuth application on each Mastodon instance when a user connects their account. Users just need to enter their instance URL (e.g., `mastodon.social`).
+No developer app registration needed. Promura Social automatically registers an OAuth application on each Mastodon instance when a user connects their account. Users just need to enter their instance URL (e.g., `mastodon.social`).
 
 ## Inbox: Backfill Historical Messages
 

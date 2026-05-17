@@ -127,7 +127,7 @@ else:
 
 # Database
 DATABASES = {
-    "default": env.db("DATABASE_URL", default="postgres://postgres:postgres@localhost:5432/brightbean"),
+    "default": env.db("DATABASE_URL", default="postgres://postgres:postgres@localhost:5432/promura"),
 }
 
 # Custom user model
