@@ -8,6 +8,10 @@ services:
       - DATABASE_URL=postgres://postgres:postgres@postgres:5432/promura
 
   worker:
+    # Apply migrations first so worker doesn't race the app on a fresh DB.
+    # `migrate` is a no-op when migrations are already applied, so this is idempotent.
+    # Prod uses a dedicated migrate service; dev keeps it inline for simplicity.
+    command: sh -c "python manage.py migrate --noinput && python manage.py process_tasks"
     volumes:
       - .:/app
     environment:
