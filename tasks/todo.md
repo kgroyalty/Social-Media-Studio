@@ -6,6 +6,25 @@ Every task has an acceptance criterion. Nothing is "done" without it.
 
 ---
 
+## Strategy Decision: 2026-05-18 — Skinny Sprint 0 + Real-Use Test
+
+Per senior-dev mentor recommendation, Sprint 0 is **trimmed** to its highest-leverage items so we get to real validation faster. Full Sprint 0 (with pytest suite + sprint verification gate) is deferred and trigger-gated.
+
+**Skinny Sprint 0 (executing now):**
+- S0-1 ✅ Local docker dev verified
+- S0-2 ✅ Lessons.md seeded
+- S0-3 Pre-commit hooks active (kept — cheap, high-leverage)
+- S0-4 GitHub Actions CI (test + lint, no deploy yet)
+- S0-5 Sentry env-tagging
+
+**Deferred — trigger-gated:**
+- S0-6 Full pytest baseline → **Gate:** complete BEFORE any payment-handling code ships (Sprint 2). No money code without tests.
+- S0-7 Sprint verification gate → not needed for skinny scope; verification happens per-item.
+
+**Then:** Real-use test on the deployed VPS instance. Connect a real social account, schedule a real post, walk an approval flow. Notes from that experience re-prioritize Sprint 1.
+
+---
+
 ## Currently Active: Sprint 0 — Foundation Hardening + Local Dev
 
 **Sprint goal:** Get to a state where you (Operator) can run Promura Social locally, see changes live, and have safety nets (tests + CI + observability + secret scanning) catching regressions before they reach the VPS.
