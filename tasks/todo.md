@@ -73,10 +73,34 @@ Per senior-dev mentor recommendation, Sprint 0 is **trimmed** to its highest-lev
   Acceptance: `pytest` runs from repo root and produces a green test run (even if coverage is low). pytest-django configured per pyproject.toml. conftest.py at root already exists; verify it loads. Test count > 0. At least one model test + one view smoke test exist as the foundation pattern.
   Owner: Engineering (Claude)
 
-- [ ] **S0-7 — Verify Sprint 0 exit criteria end-to-end**
-  Acceptance: Operator opens local dev, makes a deliberate trivial change (e.g., capitalizes a word in a template), sees it live in browser; runs `pre-commit run --all-files` and sees it pass; pushes to a feature branch and sees GitHub Actions run green; merges to main.
-  Owner: Operator (Kg) verifies, Engineering (Claude) fixes any issues found
-  This is the SPRINT GATE — Sprint 1 doesn't start until S0-7 is checked off.
+- [DEFER] **S0-6 — Baseline pytest suite establishes the CI gate**
+  Status: Deferred per Skinny Sprint 0 decision. **Trigger to un-defer:** before any payment-handling code ships (Sprint 2). No money code without tests.
+
+- [DEFER] **S0-7 — End-to-end sprint verification gate**
+  Status: Per-task verification used instead.
+
+---
+
+## Manual operator follow-ups (5 minutes total)
+
+These are one-time GitHub/SaaS settings the operator must do — Claude cannot do them via CLI.
+
+- [ ] **OP-1 — Enable GitHub Actions on the repo**
+  Why: CI workflow file is committed and registered, but Actions is disabled by default on forked repos. Until enabled, CI never runs.
+  How: https://github.com/kgroyalty/Social-Media-Studio/settings/actions → "Allow all actions and reusable workflows" → Save. Then trigger by re-pushing main or via Actions tab → Run workflow.
+  Verification: Re-push a tiny change to main and watch a green check appear in the Actions tab within ~3 min.
+
+- [ ] **OP-2 — Create Sentry project + wire DSN**
+  Why: Sentry init code is live but DSN env var is empty, so init is a no-op. No errors will be captured until DSN is set.
+  How: https://sentry.io → Create Project → Django → grab DSN (format: `https://xxx@xxx.ingest.sentry.io/yyy`). Add to BOTH .env files:
+    - Local: `~/projects/promura-social/.env` → `SENTRY_DSN=<dsn>` (already has SENTRY_ENVIRONMENT=local)
+    - VPS: `/var/www/promura-social/.env` → `SENTRY_DSN=<dsn>` (already has SENTRY_ENVIRONMENT=production)
+    Then restart containers: `docker compose -f docker-compose.yml -f docker-compose.prod.yml up -d --no-deps app worker` on VPS, `docker compose restart app worker` locally.
+  Verification: `curl http://localhost:8001/__deliberately_404` then check Sentry — should see a 404 event tagged `environment: local`.
+
+- [ ] **OP-3 — (Optional) Branch protection on main**
+  Why: Once CI is running, require it to be green before merging to main.
+  How: https://github.com/kgroyalty/Social-Media-Studio/settings/branches → Add rule for `main` → "Require status checks to pass before merging" → select CI/lint, CI/typecheck, CI/test, CI/build, CI/secrets-scan.
 
 ---
 
