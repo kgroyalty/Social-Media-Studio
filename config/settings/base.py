@@ -289,13 +289,18 @@ ENCRYPTION_KEY_SALT = env("ENCRYPTION_KEY_SALT", default="").encode("utf-8") or 
 
 # Sentry
 SENTRY_DSN = env("SENTRY_DSN")
+# Tag every event with the environment so prod errors can be filtered from local noise.
+# Falls back to "local" when running on a developer machine without explicit env var.
+SENTRY_ENVIRONMENT = env("SENTRY_ENVIRONMENT", default="local")
 if SENTRY_DSN:
     import sentry_sdk
 
     sentry_sdk.init(
         dsn=SENTRY_DSN,
+        environment=SENTRY_ENVIRONMENT,
         traces_sample_rate=0.1,
         profiles_sample_rate=0.1,
+        send_default_pii=False,  # Privacy: do not capture cookies/headers/user identifiers by default.
     )
 
 # Platform credentials env vars (cloud version)

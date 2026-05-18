@@ -34,16 +34,12 @@ repos:
         args: ["--fix"]
       - id: ruff-format
 
-  # mypy: static type checking for Python
-  - repo: https://github.com/pre-commit/mirrors-mypy
-    rev: v1.13.0
-    hooks:
-      - id: mypy
-        files: ^(apps|config|providers)/
-        args: ["--ignore-missing-imports"]
-        additional_dependencies:
-          - django-stubs
-          - types-requests
+  # mypy is intentionally NOT in pre-commit hooks.
+  # Reason: mypy needs the full Django + INSTALLED_APPS dependency tree to load
+  # settings during type inference. Replicating that in pre-commit's isolated
+  # env makes commits take 60s+ and breaks on every new dependency.
+  # mypy still runs in CI (.github/workflows/ci.yml typecheck job) where the
+  # real requirements.txt is installed. That is the correct gate.
 
   # gitleaks: block commits that contain secrets
   - repo: https://github.com/gitleaks/gitleaks
@@ -51,13 +47,10 @@ repos:
     hooks:
       - id: gitleaks
 
-  # Django: run Django's own system checks
-  - repo: local
-    hooks:
-      - id: django-check
-        name: django-check
-        entry: python manage.py check
-        language: system
-        pass_filenames: false
-        files: \.(py|html)$
-        stages: [pre-push]
+  # django-check pre-push hook intentionally removed.
+  # Reason: hook ran `python manage.py check` on the host Python, but the host
+  # may not have `python` (only `python3`) and definitely does not have Django
+  # installed (Django lives in the Docker container, not the OS Python).
+  # The CI build job runs Django checks implicitly via collectstatic during
+  # image build. That is the correct gate. Re-enable here only if every
+  # contributor maintains a host-side virtualenv with Django.
